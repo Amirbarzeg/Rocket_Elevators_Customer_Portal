@@ -8630,19 +8630,19 @@
     ]
   },
   "packageFolders": {
-    "/home/amirbarzegar/.nuget/packages/": {}
+    "/home/amir/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/amirbarzegar/Rocket_Elevators_Customer_Portal/Rocket_Elevators_Customer_Portal.csproj",
+      "projectUniqueName": "/home/amir/Rocket_Elevators_Customer_Portal/Rocket_Elevators_Customer_Portal.csproj",
       "projectName": "Rocket_Elevators_Customer_Portal",
-      "projectPath": "/home/amirbarzegar/Rocket_Elevators_Customer_Portal/Rocket_Elevators_Customer_Portal.csproj",
-      "packagesPath": "/home/amirbarzegar/.nuget/packages/",
-      "outputPath": "/home/amirbarzegar/Rocket_Elevators_Customer_Portal/obj/",
+      "projectPath": "/home/amir/Rocket_Elevators_Customer_Portal/Rocket_Elevators_Customer_Portal.csproj",
+      "packagesPath": "/home/amir/.nuget/packages/",
+      "outputPath": "/home/amir/Rocket_Elevators_Customer_Portal/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/amirbarzegar/.nuget/NuGet/NuGet.Config"
+        "/home/amir/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -8711,16 +8711,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.3, 3.1.3]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.linux-x64",
-            "version": "[3.1.5, 3.1.5]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -8729,7 +8719,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.301/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.412/RuntimeIdentifierGraph.json"
       }
     }
   },

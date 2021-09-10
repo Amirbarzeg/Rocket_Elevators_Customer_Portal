@@ -20,7 +20,8 @@ namespace Rocket_Elevators_Customer_Portal.Areas.Identity
                 //         context.Configuration.GetConnectionString("Rocket_Elevators_Customer_PortalIdentityDbContextConnection")));
 
                 // Replace with your connection string.
-                var connectionString = "server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;user=codeboxx;password=Codeboxx1!;database=AmirPortal";
+                var connectionString = "server=localhost;port=3306;user=root;password=New1234@;database=rocket";
+                // Server=(localdb)\\mssqllocaldb;Database=Rocket;Trusted_Connection=True;MultipleActiveResultSets=true
 
                 // Replace with your server version and type.
                 // Use 'MariaDbServerVersion' for MariaDB.
