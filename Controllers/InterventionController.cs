@@ -72,7 +72,7 @@ public async Task<IActionResult> InterventionAsync()
                     Console.WriteLine(elevator);
                     Console.WriteLine(battery);
                     Console.WriteLine(building);
-            return View("~/Views/Intervention/Intervention.cshtml");
+            return View("~/Views/Interventio.cshtml");
         }
         public async Task<IActionResult> Columns(string colId, string colBatId)
         {

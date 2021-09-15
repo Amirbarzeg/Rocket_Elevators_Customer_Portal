@@ -503,7 +503,6 @@
 /home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/_ViewStart.cshtml.g.cs
 /home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs
 /home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs
-/home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Razor/Views/Intervention/Intervention.cshtml.g.cs
 /home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Razor/Views/Intervention/Intervention2.cshtml.g.cs
 /home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Razor/Views/Intervention/Intervention3.cshtml.g.cs
 /home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Razor/Views/Intervention/Intervention4.cshtml.g.cs
@@ -524,3 +523,4 @@
 /home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Rocket_Elevators_Customer_Portal.dll
 /home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Rocket_Elevators_Customer_Portal.pdb
 /home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Rocket_Elevators_Customer_Portal.genruntimeconfig.cache
+/home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Razor/Views/Interventio.cshtml.g.cs

@@ -30,22 +30,22 @@
                             <option id="building" name="building" value = "@ViewBag.building">@ViewBag.building</option>
                         </select>
                     </div>
-                    <div id="battery" class="form-group battery">
+                    <div id="battery" class="form-group">
                         <label for="battery">Battery</label>
                         <select id="battery-select" class="form-control pointer" name="battery_id">
                             <option id="battery" name="battery" value = "@ViewBag.building">@ViewBag.building</option>
                         </select>
                     </div>
-                    <div id="column" class="form-group column">
+                    <div class="form-group">
                         <label for="column">Column</label>
                         <select id="column-select" class="form-control pointer" name="column_id">
-                            <option id="column" name="column" value = "@ViewBag.building">@ViewBag.column</option>
+                            <option id="column" name="column" value = "@ViewBag.column">@ViewBag.column</option>
                         </select>
                     </div>
-                    <div id="elevator" class="form-group  elevator">
+                    <div class="form-group">
                         <label for="elevator">Elevator</label>
                         <select id="elevator-select" class="form-control pointer" name="elevator_id">
-                        <option id="elevator" name="elevator" value = "@ViewBag.building">@ViewBag.elevator</option>
+                        <option id="elevator" name="elevator" value = "@ViewBag.elevator">@ViewBag.elevator</option>
                         </select>
                     </div>
                     <div class="form-group description">
@@ -65,27 +65,43 @@
 </form>
 <script>
     function SendIntervention() {
-        console.log("hahaha");
+        console.log($('#building').val());
+        console.log($('#battery').val());
+
         var data = {
-             
-            AuthorId: $('#name').val(),
-            BuildingId: $('#building').val(),
-            BatteryId: $('#battery').val(),
-            ColumnId: $('#column').val(),
-            ElevatorId: $('#elevator').val(),
-            CustomerId: ('#name').val()
+            //   id:'1',
+                authorId: '1',
+                customerId: '1',
+                buildingId: $('#building').val(),
+                batteryId: $('#building').val(),
+                columnId: $('#column').val(),
+                elevatorId: $('#elevator').val(),
+                employeeId: '1',
+              //  startDat: '',
+              //  endDate : '',
+               // result : '1',
+                report: $('#description').val(),
+               // status : 'Pending',
+            //    createdAt: '',
+              //  updatedAt: ''
         };
         $.ajax({
-            url: 'https://rocketrestapi.azurewebsites.net/api/interventions/',
+            url: 'https://rocketrestapi.azurewebsites.net/api/interventions',
             type: 'Post',
             data: JSON.stringify(data),
+            dataType: "json",
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             success: function (result) {
                 window.location.href = "/Product/Product";
                 return false;
+            },
+            error:function (error){
+            console.log('we have an error',error);
+            console.log(data);
+
+
             }
         });
         return false;
