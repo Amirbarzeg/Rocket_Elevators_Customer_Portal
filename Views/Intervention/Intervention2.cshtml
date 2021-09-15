@@ -1,0 +1,93 @@
+@using Microsoft.AspNetCore.Identity;
+@using static Rocket_Elevators_Customer_Portal.Models.Buildings
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model dynamic
+@* @{
+     var po= ViewBag.building;
+} *@
+
+
+<div class="container">
+
+    <div class="bold font-raleway wow fadeInUp animated">
+        <h2 class="fs-55 fw-400 text-center">INTERVENTIONS</h2>
+    </div>
+
+</div>
+
+<!-- form start -->
+<form method="post" id="interventionForm">
+    <div class="card-body">
+        <div class="form-group ">
+            <label for="customer">Customer</label>
+            <select id="customer-select" class="form-control pointer" name="building_id">
+                <option selected value="@ViewBag.name">@ViewBag.name</option>
+               
+            </select>
+        </div>
+        <div class="form-group ">
+            <label for="building">Building</label>
+
+            <select id="building-select" required class="form-control pointer" name="building_id">
+                  <option value = "@ViewBag.building">@ViewBag.building</option>
+                
+
+            </select>
+        </div>
+        <div id="battery" class="form-group battery">
+            <label for="battery">Battery</label>
+            <select id="battery-select" class="form-control pointer" name="battery_id">
+                <option value = "@ViewBag.building">@ViewBag.building</option>
+                 
+            </select>
+        </div>
+        <div id="column" class="form-group column">
+            <label for="column">Column</label>
+            <select id="column-select" class="form-control pointer" name="column_id">
+               <option value = "@ViewBag.building">@ViewBag.column</option>
+                  
+                
+            </select>
+        </div>
+        <div class="form-group description">
+            <label>Description</label>
+            <textarea required class="form-control" name="description" id="description" rows="3" placeholder="Enter ..."></textarea>
+        </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="btnIntervention"><i></i> SUBMIT INTERVENTION</button>
+    </div>
+</form>
+
+
+@section Scripts {
+
+<script type="text/javascript">
+console.log('hahaha');
+$(document).ready(function(){
+ var userEmail= @UserManager.GetUserName(User);
+ $.ajax({
+
+cache:false,
+url: "https://rocketrestapi.azurewebsites.net/api/buildings",
+type: 'GET',
+dataType: 'json',
+success: function (obj){
+   for (var i=0; i<obj.length; i++){
+
+       if (obj[i].EmailOfTheCompany=userEmail){
+       
+ $("#buiding-select").append('<option value="' + obj[i]["id"] +  '">' + obj[i]["id"]+'</option>');
+  @* console.log(obj[i]); *@
+
+       }
+   }
+}
+ })
+});
+
+</script>
+}

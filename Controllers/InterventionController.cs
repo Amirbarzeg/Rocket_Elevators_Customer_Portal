@@ -11,6 +11,11 @@ using System.Net.Http;
 using System.Net;
 using System.Dynamic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Text.Encodings.Web;
+using System.Net.Http.Headers;
+using System.Text;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace RocketElevatorsCustomerPortal.Controllers
@@ -28,69 +33,107 @@ public async Task<IActionResult> InterventionAsync()
 
 
             dynamic mymodel = new ExpandoObject();
-            mymodel.building = await GetBuildings();
-            mymodel.battery = await GetBatteries();
-            mymodel.column= await GetColumns();
-            mymodel.elevator= await GetElevators();
             return View(mymodel);
         }
 
-        public async Task<IEnumerable<Buildings>> GetBuildings(){
-         List<Buildings> buildingList = new List<Buildings>();
-         using (var httpClient= new HttpClient()){
-            using (var response= await httpClient.GetAsync("https://rocketrestapi.azurewebsites.net/api/buildings"))
-            {
-                string apiResponse= await response.Content.ReadAsStringAsync();
-                buildingList= JsonConvert.DeserializeObject<List<Buildings>>(apiResponse);
-
-            }
-         }
-                    return buildingList;
-         }
-          public async Task<IEnumerable<Batteries>> GetBatteries(){
-         List<Batteries> buildingList = new List<Batteries>();
-         using (var httpClient= new HttpClient()){
-            using (var response= await httpClient.GetAsync("https://rocketrestapi.azurewebsites.net/api/batteries"))
-            {
-                string apiResponse= await response.Content.ReadAsStringAsync();
-                buildingList= JsonConvert.DeserializeObject<List<Batteries>>(apiResponse);
-
-            }
-         }
-                    return buildingList;
-         }
-          public async Task<IEnumerable<Columns>> GetColumns(){
-         List<Columns> buildingList = new List<Columns>();
-         using (var httpClient= new HttpClient()){
-            using (var response= await httpClient.GetAsync("https://rocketrestapi.azurewebsites.net/api/columns"))
-            {
-                string apiResponse= await response.Content.ReadAsStringAsync();
-                buildingList= JsonConvert.DeserializeObject<List<Columns>>(apiResponse);
-
-            }
-         }
-                    return buildingList;
-         }
-        
-        public async Task<IEnumerable<Elevators>> GetElevators(){
-         List<Elevators> buildingList = new List<Elevators>();
-         using (var httpClient= new HttpClient()){
-            using (var response= await httpClient.GetAsync("https://rocketrestapi.azurewebsites.net/api/elevators"))
-            {
-                string apiResponse= await response.Content.ReadAsStringAsync();
-                buildingList= JsonConvert.DeserializeObject<List<Elevators>>(apiResponse);
-
-            }
-         }
-                    return buildingList;
-         }
-
-
-
-
-         public IActionResult Product()
+        public async Task<IActionResult> Elevators(string elevId, string elevColId)
         {
-            return View();
+            // Console.WriteLine("!!!!!!!!!!!!!");
+            // Console.WriteLine(elevBatId);
+            // Console.WriteLine("!!!!!!!!!!!!");
+
+            var name = User.Identity.Name;
+            ViewBag.name=name;
+            var column= elevColId;
+            var elevator= elevId;
+            ViewBag.column=column;
+            ViewBag.elevator= elevator;
+
+            var httpClient = new HttpClient();
+               
+                var response = await httpClient.GetAsync("https://rocketrestapi.azurewebsites.net/api/columns/" + column +"/get");
+                
+                    string apiResponse = await response.Content.ReadAsStringAsync(); 
+                    Console.WriteLine("============");
+                    Console.WriteLine(apiResponse);
+                    Console.WriteLine("============");
+                    Console.WriteLine("!!!!!!!!!!!!!");
+                    Console.WriteLine(elevId);
+                    Console.WriteLine("!!!!!!!!!!!!");
+                    dynamic data = JObject.Parse(apiResponse);
+                    Console.WriteLine(data.batteryId);
+                    var battery=data.batteryId;
+                    var building=data.batteryId;
+                    ViewBag.battery=battery;
+                    ViewBag.building=building;
+             
+                    Console.WriteLine(name);
+                    Console.WriteLine(column);
+                    Console.WriteLine(elevator);
+                    Console.WriteLine(battery);
+                    Console.WriteLine(building);
+            return View("~/Views/Intervention/Intervention.cshtml");
+        }
+        public async Task<IActionResult> Columns(string colId, string colBatId)
+        {
+            var name = User.Identity.Name;
+            ViewBag.name=name;
+            var column= colId;
+            var battery= colBatId;
+            ViewBag.column=column;
+            ViewBag.battery= battery;
+            ViewBag.building= battery;
+
+            return View("~/Views/Intervention/Intervention2.cshtml");
+        }
+        public async Task<IActionResult> Batteries(string batId)
+        {
+            var name = User.Identity.Name;
+            ViewBag.name=name;
+            var battery= batId;
+            ViewBag.battery= battery;
+            //No need fot a viewbag for building because the value is the same as battery
+            return View("~/Views/Intervention/Intervention3.cshtml");
+        }
+        public async Task<IActionResult> Buildings(string builId)
+        {
+            var name = User.Identity.Name;
+            ViewBag.name=name;
+            var building= builId;
+            ViewBag.building= building;
+            //No need fot a viewbag for building because the value is the same as battery
+            return View("~/Views/Intervention/Intervention4.cshtml");
+        }
+        public async Task<IActionResult> info( string com,string cont, string contph, string contem, string des, string teco, string tecoph, string tecoem)
+        {
+            var company = com;
+            var contact = cont;
+            var contactPhone = contph;
+            var contactEmail = contem;
+            var desc = des;
+            var techCo = teco;
+            var techPh = tecoph;
+            var techEm = tecoem;
+            ViewBag.company=company;
+            ViewBag.contact=contact;
+            ViewBag.contactPhone=contactPhone;
+            ViewBag.contactEmail=contactEmail;
+            ViewBag.desc= desc;
+            ViewBag.techCo=techCo;
+            ViewBag.techPh=techPh;
+            ViewBag.techEm=techEm;
+
+            Console.WriteLine(company);
+            Console.WriteLine(contact);
+            Console.WriteLine(contactPhone);
+            Console.WriteLine(contactEmail);
+            Console.WriteLine(desc);
+            Console.WriteLine(techCo);
+            Console.WriteLine(techPh);
+            Console.WriteLine(techEm);
+            
+            //No need fot a viewbag for building because the value is the same as battery
+            return View("~/Views/UpdateInfo/CustomerInfoUpdate.cshtml");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
