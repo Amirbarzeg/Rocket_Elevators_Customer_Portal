@@ -30,7 +30,7 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
             return View(mymodel);
         }
         
-        // Customers
+        // CUSTOMERS
         public async Task<IEnumerable<Customers>> GetCustomer()
         {
             var name = User.Identity.Name;
@@ -74,7 +74,6 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
         public async Task<IEnumerable<Batteries>> GetBatteries()
         {
             var name = User.Identity.Name;
-            Console.WriteLine(name);
             List<Batteries> batteryList = new List<Batteries>();
             using (var httpClient = new HttpClient())
             {
@@ -90,7 +89,6 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
                 }
             }
             ViewBag.batteries = batteryList;
-            // Console.WriteLine(batteryList);
             return batteryList;
         }
 
@@ -125,42 +123,8 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
                     elevatorList = JsonConvert.DeserializeObject<List<Elevators>>(apiResponse);
                 }
             }
-            // Console.WriteLine(elevatorList);
             ViewBag.elevators = elevatorList;
             return elevatorList;
         }
-
-        //Update Contact Info
-         // public async Task<Customers> ModifyContactInfo(int id)
-        //  public async Task<IActionResult> ModifyContactInfo(int id)
-        // {
-        //     Customers customer = new Customers();
-        //     using (var httpClient = new HttpClient())
-        //     {
-        //         using (var response = await httpClient.GetAsync("https://rocketrestapi.azurewebsites.net/api/customers/" + id))
-        //         {
-        //             string apiResponse = await response.Content.ReadAsStringAsync();
-        //             customer = JsonConvert.DeserializeObject<Customers>(apiResponse);
-        //         }
-        //     }
-        //     return View(customer);
-        // }
-        
-        
-        //   public async Task<IActionResult> ModifyAddressInfo(int id)
-        // {
-        //     Addresses address = new Addresses();
-        //     using (var httpClient = new HttpClient())
-        //     {
-        //         using (var response = await httpClient.GetAsync("https://rocketrestapi.azurewebsites.net/api/addresses/" + id))
-        //         {
-        //             string apiResponse = await response.Content.ReadAsStringAsync();
-        //             address = JsonConvert.DeserializeObject<Addresses>(apiResponse);
-        //         }
-        //     }
-        //     return View(address);
-        // }
-          
-        
     }
 }

@@ -1,11 +1,5 @@
-@using Microsoft.AspNetCore.Identity;
-@using static Rocket_Elevators_Customer_Portal.Models.Buildings
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
 @model dynamic
-@* @{
-     var po= ViewBag.building;
-} *@
+
 
 <div class="container">
 
@@ -16,61 +10,61 @@
 </div>
 
 <!-- form start -->
-<form method="post" id="interventionForm">
-    <div class="card-body">
-        <div class="form-group ">
-            <label for="customer">Customer</label>
-            <select id="customer-select" class="form-control pointer" name="building_id">
-                <option selected value="@ViewBag.name">@ViewBag.name</option>
-            </select>
-        </div>
-        <div class="form-group ">
-            <label for="building">Building</label>
+<form onsubmit="return SendIntervention();" id="interventionForm">
+    <div style="width: 1400px; left: 95px;" class="container">
+        <div style="width: 1400px; left: 95px;" class="row">
+            <div id="typeChoice" class="col-md-8 form-group" style="width: 1400px; left: 95px;">
+                <div class="card-body">
+                    <div class="form-group ">
+                        <label for="customer">CustomerId</label>
+                        <select id="customer-select" class="form-control pointer" name="building_id">
+                            <option id="name" name="name" selected value="@ViewBag.customer">@ViewBag.name</option>
+                        
+                        </select>
+                    </div>
+                    <div class="form-group ">
+                        <label for="building">Building</label>
+                        <select id="building-select" required class="form-control pointer" name="building_id">
+                            <option id="building" name="building" value = "@ViewBag.building">@ViewBag.building</option>
+                        </select>
+                    </div>
+                    <div class="form-group description">
+                        <label>Description</label>
+                        <textarea required class="form-control" name="description" id="description" rows="3" placeholder="Enter ..."></textarea>
+                    </div>
+                </div>
 
-            <select id="building-select" required class="form-control pointer" name="building_id">
-                  <option value = "@ViewBag.building">@ViewBag.building</option>
-                
 
-            </select>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="btnInt"><i class="fa fa-check"></i> SUBMIT INTERVENTION</button>
+                </div>
+        
+            </div>
         </div>
-        <div class="form-group description">
-            <label>Description</label>
-            <textarea required class="form-control" name="description" id="description" rows="3" placeholder="Enter ..."></textarea>
-        </div>
-    </div>
-    <!-- /.card-body -->
-
-    <div class="col-md-12">
-        <button type="submit" class="btn btn-primary btn-lg btn-block" id="btnIntervention"><i></i> SUBMIT INTERVENTION</button>
     </div>
 </form>
-
-
-@section Scripts {
-
-<script type="text/javascript">
-console.log('hahaha');
-$(document).ready(function(){
- var userEmail= @UserManager.GetUserName(User);
- $.ajax({
-
-cache:false,
-url: "https://rocketrestapi.azurewebsites.net/api/buildings",
-type: 'GET',
-dataType: 'json',
-success: function (obj){
-   for (var i=0; i<obj.length; i++){
-
-       if (obj[i].EmailOfTheCompany=userEmail){
-       
- $("#buiding-select").append('<option value="' + obj[i]["id"] +  '">' + obj[i]["id"]+'</option>');
-  @* console.log(obj[i]); *@
-
-       }
-   }
-}
- })
-});
-
+<script>
+    function SendIntervention() {
+        var data = {
+                CustomerId: parseInt($('#name').val()),
+                BuildingId: parseInt($('#building').val()),
+                Report: $('#description').val()
+        };
+        $.ajax({
+            url: 'https://rocketrestapi.azurewebsites.net/api/Interventions/post',
+            type: 'Post',
+            data: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            success: function (result){
+               alert('We Will Take Care Of Your Concern!');
+               return false;
+            },
+            error: function (error){
+            console.log('we have an error',error);
+            }
+        });
+        return false;
+    }
 </script>
-}

@@ -345,7 +345,6 @@
 //wsl$/Ubuntu-18.04/home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Rocket_Elevators_Customer_Portal.dll
 //wsl$/Ubuntu-18.04/home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Rocket_Elevators_Customer_Portal.pdb
 //wsl$/Ubuntu-18.04/home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Rocket_Elevators_Customer_Portal.genruntimeconfig.cache
-/home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/publish/publish/web.config
 /home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/publish/web.config
 /home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/appsettings.Development.json
 /home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/appsettings.json
@@ -354,11 +353,6 @@
 /home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/publish/appsettings.Development.json
 /home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/publish/appsettings.json
 /home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/publish/global.json
-/home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/publish/publish/appsettings.Development.json
-/home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/publish/publish/appsettings.json
-/home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/publish/publish/global.json
-/home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/publish/publish/Rocket_Elevators_Customer_Portal.deps.json
-/home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/publish/publish/Rocket_Elevators_Customer_Portal.runtimeconfig.json
 /home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/publish/Rocket_Elevators_Customer_Portal.deps.json
 /home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/publish/Rocket_Elevators_Customer_Portal.runtimeconfig.json
 /home/amir/Rocket_Elevators_Customer_Portal/bin/Debug/netcoreapp3.1/Rocket_Elevators_Customer_Portal.StaticWebAssets.xml
@@ -523,4 +517,4 @@
 /home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Rocket_Elevators_Customer_Portal.dll
 /home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Rocket_Elevators_Customer_Portal.pdb
 /home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Rocket_Elevators_Customer_Portal.genruntimeconfig.cache
-/home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Razor/Views/Interventio.cshtml.g.cs
+/home/amir/Rocket_Elevators_Customer_Portal/obj/Debug/netcoreapp3.1/Razor/Views/Intervention/Intervention.cshtml.g.cs

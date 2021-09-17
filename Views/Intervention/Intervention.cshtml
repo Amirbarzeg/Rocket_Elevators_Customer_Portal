@@ -1,7 +1,4 @@
 @model dynamic
-@{
-    ViewData["Title"] = "Intervention";
-}
 
 <div class="container">
 
@@ -18,9 +15,9 @@
             <div id="typeChoice" class="col-md-8 form-group" style="width: 1400px; left: 95px;">
                 <div class="card-body">
                     <div class="form-group ">
-                        <label for="customer">Customer</label>
+                        <label for="customer">CustomerId</label>
                         <select id="customer-select" class="form-control pointer" name="building_id">
-                            <option id="name" name="name" selected value="@ViewBag.name">@ViewBag.name</option>
+                            <option id="name" name="name" selected value="@ViewBag.customer">@ViewBag.name</option>
                         
                         </select>
                     </div>
@@ -65,43 +62,27 @@
 </form>
 <script>
     function SendIntervention() {
-        console.log($('#building').val());
-        console.log($('#battery').val());
-
         var data = {
-            //   id:'1',
-                authorId: '1',
-                customerId: '1',
-                buildingId: $('#building').val(),
-                batteryId: $('#building').val(),
-                columnId: $('#column').val(),
-                elevatorId: $('#elevator').val(),
-                employeeId: '1',
-              //  startDat: '',
-              //  endDate : '',
-               // result : '1',
-                report: $('#description').val(),
-               // status : 'Pending',
-            //    createdAt: '',
-              //  updatedAt: ''
+                CustomerId: parseInt($('#name').val()),
+                BuildingId: parseInt($('#building').val()),
+                BatteryId: parseInt($('#building').val()),
+                ColumnId: parseInt($('#column').val()),
+                ElevatorId: parseInt($('#elevator').val()),
+                Report: $('#description').val()
         };
         $.ajax({
-            url: 'https://rocketrestapi.azurewebsites.net/api/interventions',
+            url: 'https://rocketrestapi.azurewebsites.net/api/Interventions/post',
             type: 'Post',
             data: JSON.stringify(data),
-            dataType: "json",
             headers: {
                 'Content-Type': 'application/json'
             },
-            success: function (result) {
-                window.location.href = "/Product/Product";
-                return false;
+            success: function (result){
+               alert('We Will Take Care Of Your Concern!');
+               return false;
             },
-            error:function (error){
+            error: function (error){
             console.log('we have an error',error);
-            console.log(data);
-
-
             }
         });
         return false;
