@@ -1,0 +1,87 @@
+@section Styles {
+<link rel="stylesheet" href="~/css/myCss.css" />
+}
+
+<div class="text-center">
+    <h1 class="display-4">Update Contact Info</h1>
+    <p></p>
+</div>
+
+<form onsubmit="return updateInfo();" id="customerUpdate">
+    <div style="width: 1400px; left: 95px;" class="container">
+        <div style="width: 1400px; left: 95px;" class="row">
+            <div id="typeChoice" class="col-md-8 form-group" style="width: 1400px; left: 95px;">
+
+                <label for="company_name">Company Name</label>
+                <input required type="text" value="@ViewBag.company" class="form-control" name="company_name" id="company_name" readonly disabled>
+                <br />
+
+                <label for="contact_name">Full Name Of Company Contact</label>
+                <input required type="text" value="@ViewBag.contact" class="form-control" name="contact_name" id="contact_name">
+                <br />
+
+                <label for="contact_phone">Company Contact Phone Number</label>
+                <input required type="text" value="@ViewBag.contactPhone" class="form-control" name="contact_phone" id="contact_phone">
+                <br />
+
+                <label for="contact_phone">Company Contact Email</label>
+                <input required type="text" value="@ViewBag.contactEmail" class="form-control" name="contact_email" id="contact_email">
+                <br />
+
+                <label for="description">Company Description</label>
+                <input required type="text" value="@ViewBag.desc" class="form-control" name="description" id="description">
+                <br />
+
+                <label for="tech_name">Full Name Of Technical/Service Contact</label>
+                <input required type="text" value="@ViewBag.techCo" class="form-control" name="tech_name" id="tech_name">
+                <br />
+
+
+                <label for="tech_phone">Technical/Service Phone Number</label>
+                <input required type="text" value="@ViewBag.techPh" class="form-control" name="tech_phone" id="tech_phone">
+                <br />
+
+
+                <label for="tech_mail">Technical/Service Email</label>
+                <input required type="text" value="@ViewBag.techEm" class="form-control" name="tech_email" id="tech_email">
+                <br />
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary" id="btnUpdateInfo"><i class="fa fa-check"></i> UPDATE INFO </button>
+                        <br /><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    function updateInfo() {
+        var data = {
+            companyName: $('#company_name').val(),
+            nameOfContact: $('#contact_name').val(),
+            companyContactPhone: $('#contact_phone').val(),
+            emailOfTheCompany: $('#contact_email').val(),
+            companyDescription: $('#description').val(),
+            nameOfServiceTechAuthority: $('#tech_name').val(),
+            techAuhtorityPhone: $('#tech_phone').val(),
+            techManagerServiceEmail: $('#tech_email').val()
+        };
+        $.ajax({
+            url: 'https://rocketrestapi.azurewebsites.net/api/customers/',
+            type: 'PUT',
+            data: JSON.stringify(data),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            success: function (result) {
+                window.location.href = "/Product/Product";
+                return false;
+            }
+        });
+        return false;
+    }
+</script>

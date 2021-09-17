@@ -1,0 +1,90 @@
+@model dynamic
+
+<div class="container">
+
+    <div class="bold font-raleway wow fadeInUp animated">
+        <h2 class="fs-55 fw-400 text-center">INTERVENTIONS</h2>
+    </div>
+
+</div>
+
+<!-- form start -->
+<form onsubmit="return SendIntervention();" id="interventionForm">
+    <div style="width: 1400px; left: 95px;" class="container">
+        <div style="width: 1400px; left: 95px;" class="row">
+            <div id="typeChoice" class="col-md-8 form-group" style="width: 1400px; left: 95px;">
+                <div class="card-body">
+                    <div class="form-group ">
+                        <label for="customer">CustomerId</label>
+                        <select id="customer-select" class="form-control pointer" name="building_id">
+                            <option id="name" name="name" selected value="@ViewBag.customer">@ViewBag.name</option>
+                        
+                        </select>
+                    </div>
+                    <div class="form-group ">
+                        <label for="building">Building</label>
+                        <select id="building-select" required class="form-control pointer" name="building_id">
+                            <option id="building" name="building" value = "@ViewBag.building">@ViewBag.building</option>
+                        </select>
+                    </div>
+                    <div id="battery" class="form-group">
+                        <label for="battery">Battery</label>
+                        <select id="battery-select" class="form-control pointer" name="battery_id">
+                            <option id="battery" name="battery" value = "@ViewBag.building">@ViewBag.building</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="column">Column</label>
+                        <select id="column-select" class="form-control pointer" name="column_id">
+                            <option id="column" name="column" value = "@ViewBag.column">@ViewBag.column</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="elevator">Elevator</label>
+                        <select id="elevator-select" class="form-control pointer" name="elevator_id">
+                        <option id="elevator" name="elevator" value = "@ViewBag.elevator">@ViewBag.elevator</option>
+                        </select>
+                    </div>
+                    <div class="form-group description">
+                        <label>Description</label>
+                        <textarea required class="form-control" name="description" id="description" rows="3" placeholder="Enter ..."></textarea>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="btnInt"><i class="fa fa-check"></i> SUBMIT INTERVENTION</button>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    function SendIntervention() {
+        var data = {
+                CustomerId: parseInt($('#name').val()),
+                BuildingId: parseInt($('#building').val()),
+                BatteryId: parseInt($('#building').val()),
+                ColumnId: parseInt($('#column').val()),
+                ElevatorId: parseInt($('#elevator').val()),
+                Report: $('#description').val()
+        };
+        $.ajax({
+            url: 'https://rocketrestapi.azurewebsites.net/api/Interventions/post',
+            type: 'Post',
+            data: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            success: function (result){
+               alert('We Will Take Care Of Your Concern!');
+               return false;
+            },
+            error: function (error){
+            console.log('we have an error',error);
+            }
+        });
+        return false;
+    }
+</script>
